@@ -30,108 +30,103 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Showcaser1/obfuscator
 --
 
 
-local ScreenGui1 = Instance.new("ScreenGui") 
-ScreenGui1.Parent = game.CoreGui
-ScreenGui1.Name = "Showcaser Encoder"
+local ShowcaserEncoder = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Frame_2 = Instance.new("Frame")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local TextBox = Instance.new("TextBox")
+local TextButton = Instance.new("TextButton")
+local TextButton_2 = Instance.new("TextButton")
 
-local Frame1 = Instance.new("Frame") 
-Frame1.Parent = ScreenGui1
-Frame1.BackgroundColor3 = Color3.fromRGB(17,17,17)
-Frame1.Position = UDim2.new(0.2,0,0.05)
-Frame1.Size = UDim2.new(0.6,0,0.8)
-Frame1.Active = true
-Frame1.Draggable = true
 
-local UICorner1 = Instance.new("UICorner") 
-UICorner1.Parent = Frame1
-UICorner1.CornerRadius = UDim.new(0.025,0)
 
-local UIStroke1 = Instance.new("UIStroke") 
-UIStroke1.Parent = Frame1
-UIStroke1.Color = Color3.fromRGB(248,248,248)
-UIStroke1.Thickness = 2
+ShowcaserEncoder.Name = "Showcaser Encoder"
+ShowcaserEncoder.Parent = game.CoreGui
 
-local TextLabel1 = Instance.new("TextLabel") 
-TextLabel1.Parent = Frame1
-TextLabel1.Name = "Title"
-TextLabel1.Position = UDim2.new(0.01,0,0.01)
-TextLabel1.BackgroundTransparency = 1
-TextLabel1.Size = UDim2.new(0.98,0,0.09)
-TextLabel1.TextColor3 = Color3.fromRGB(248,248,248)
-TextLabel1.Text = "Showcaser Obfuscator"
-TextLabel1.TextSize = 18
-TextLabel1.TextWrapped = true
-TextLabel1.Font = Enum.Font.Code
+Frame.Parent = ShowcaserEncoder
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+Frame.Draggable = true
+Frame.Position = UDim2.new(0.199999988, 546, 0.0499999821, 182)
+Frame.Size = UDim2.new(0.259793848, 0, 0.298542261, 0)
 
-local Frame2 = Frame1:Clone()
-Frame2.Parent = Frame1
-Frame2.Position = UDim2.new(0.025,0,0.12)
-Frame2.Size = UDim2.new(0.95,0,0.7)
-Frame2.Draggable = false
-Frame2.UIStroke.Thickness = 1
-Frame2.UICorner.CornerRadius = UDim.new(0.015,0)
-Frame2.Title:Destroy()
+Title.Name = "Title"
+Title.Parent = Frame
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0.00999999978, 0, 0.00999999978, 0)
+Title.Size = UDim2.new(0.980000019, 0, 0.0900000036, 0)
+Title.Font = Enum.Font.Code
+Title.Text = "Showcaser Obfuscator"
+Title.TextColor3 = Color3.fromRGB(248, 248, 248)
+Title.TextSize = 18.000
+Title.TextWrapped = true
 
-local Scrolling = Instance.new("ScrollingFrame")
-Scrolling.Parent = Frame2
-Scrolling.BackgroundColor3 = Color3.new(0,0,0)
-Scrolling.BorderSizePixel = 0
-Scrolling.Position = UDim2.new(0, 0, 0, 0)
-Scrolling.Size = UDim2.new(1, 0, 1, 0)
-Scrolling.CanvasSize = UDim2.new(50, 0, 0, 0)
-Scrolling.ScrollBarThickness = 2
+Frame_2.Parent = Frame
+Frame_2.Active = true
+Frame_2.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+Frame_2.Position = UDim2.new(0.0250000004, 0, 0.119999997, 0)
+Frame_2.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
 
-local TextBox1 = Instance.new("TextBox") 
-TextBox1.Parent = Scrolling
-TextBox1.BackgroundTransparency = 1
-TextBox1.Position = UDim2.new(0.0002,0,0.003)
-TextBox1.Size = UDim2.new(0.98,0,0.994)
-TextBox1.Font = Enum.Font.Code
-TextBox1.TextColor3 = Color3.fromRGB(248,248,248)
-TextBox1.Text = ""
-TextBox1.PlaceholderText = 'print("Code")'
-TextBox1.TextScaled = false
-TextBox1.TextWrapped = false
-TextBox1.TextSize = 18
-TextBox1.MultiLine = true
-TextBox1.ClearTextOnFocus = false
-TextBox1.TextXAlignment = Enum.TextXAlignment.Left
-TextBox1.TextYAlignment = Enum.TextYAlignment.Top
+ScrollingFrame.Parent = Frame_2
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ScrollingFrame.BorderSizePixel = 0
+ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
+ScrollingFrame.CanvasSize = UDim2.new(50, 0, 0, 0)
+ScrollingFrame.ScrollBarThickness = 2
 
-local TextButton1 = Instance.new("TextButton") 
-TextButton1.Parent = Frame1
-TextButton1.BackgroundColor3 = Color3.fromRGB(205,205,205)
-TextButton1.Position = UDim2.new(0.29,0,0.835)
-TextButton1.Size = UDim2.new(0.2,0,0.15)
-TextButton1.Style = Enum.ButtonStyle.RobloxRoundButton
-TextButton1.Font = Enum.Font.SourceSansBold
-TextButton1.TextColor3 = Color3.fromRGB(248,248,248)
-TextButton1.Text = "Obfuscate"
-TextButton1.TextSize = 18
-TextButton1.TextScaled = true
-TextButton1.TextWrapped = false
-TextButton1.Active = true
+TextBox.Parent = ScrollingFrame
+TextBox.BackgroundTransparency = 1.000
+TextBox.Position = UDim2.new(0.000199999995, 0, 0.00300000003, 0)
+TextBox.Size = UDim2.new(0.980000019, 0, 0.994000018, 0)
+TextBox.ClearTextOnFocus = false
+TextBox.Font = Enum.Font.Code
+TextBox.MultiLine = true
+TextBox.PlaceholderText = "print(\"Code\")"
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(248, 248, 248)
+TextBox.TextSize = 18.000
+TextBox.TextXAlignment = Enum.TextXAlignment.Left
+TextBox.TextYAlignment = Enum.TextYAlignment.Top
 
-local TextButton2 = TextButton1:Clone()
-TextButton2.Parent = Frame1
-TextButton2.Position = UDim2.new(0.49,0,0.835)
-TextButton2.Text = "Copy"
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(48, 205, 0)
+TextButton.Position = UDim2.new(0.399126887, 0, 0.835000038, 0)
+TextButton.Size = UDim2.new(0.200000003, 0, 0.150000006, 0)
+TextButton.Style = Enum.ButtonStyle.RobloxRoundButton
+TextButton.Font = Enum.Font.SourceSansBold
+TextButton.Text = "Obfuscate"
+TextButton.TextColor3 = Color3.fromRGB(248, 248, 248)
+TextButton.TextSize = 18.000
+
+TextButton_2.Parent = Frame
+TextButton_2.BackgroundColor3 = Color3.fromRGB(205, 205, 205)
+TextButton_2.Position = UDim2.new(0.77439177, 0, 0.835000038, 0)
+TextButton_2.Size = UDim2.new(0.200000003, 0, 0.150000006, 0)
+TextButton_2.Style = Enum.ButtonStyle.RobloxRoundButton
+TextButton_2.Font = Enum.Font.SourceSansBold
+TextButton_2.Text = "Copy"
+TextButton_2.TextColor3 = Color3.fromRGB(248, 248, 248)
+TextButton_2.TextSize = 18.000
+
+
+
 
 local ObfuscatedText = nil
-TextButton1.MouseButton1Click:Connect(function()
-if TextBox1.Text ~= "" and TextButton1.Active == true and ObfuscatedText ~= TextBox1.Text then
-   TextButton1.Active = false
-   TextBox1.Text = game:HttpGet("https://pastebin.com/raw/1YPtgPks")..''..xorEncode(TextBox1.Text)..'")'
-   ObfuscatedText = TextBox1.Text
-   TextButton1.Active = true
+TextButton.MouseButton1Click:Connect(function()
+if TextBox.Text ~= "" and TextButton.Active == true and ObfuscatedText ~= TextBox.Text then
+   TextButton.Active = false
+   TextBox.Text = game:HttpGet("https://pastebin.com/raw/1YPtgPks")..''..xorEncode(TextBox.Text)..'")'
+   ObfuscatedText = TextBox.Text
+   TextButton.Active = true
 end
 end)
 
-TextButton2.MouseButton1Click:Connect(function()
-if TextBox1.Text ~= "" and TextButton2.Active == true then
-   TextButton2.Active = false
-   setclipboard(TextBox1.Text)
-   TextButton2.Active = true
+TextButton_2.MouseButton1Click:Connect(function()
+if TextBox.Text ~= "" and TextButton_2.Active == true then
+   TextButton_2.Active = false
+   setclipboard(TextBox.Text)
+   TextButton_2.Active = true
    RequestToastMessage("copied!", 2)
 end
 end)

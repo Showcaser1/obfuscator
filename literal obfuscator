@@ -121,7 +121,7 @@ local ObfuscatedText = nil
 TextButton1.MouseButton1Click:Connect(function()
 if TextBox1.Text ~= "" and TextButton1.Active == true and ObfuscatedText ~= TextBox1.Text then
    TextButton1.Active = false
-   TextBox1.Text = game:HttpGet("https://pastebin.com/raw/XE5evsiq")..''..xorEncode(TextBox1.Text)..'")'
+   TextBox1.Text = game:HttpGet("https://pastebin.com/raw/1YPtgPks")..''..xorEncode(TextBox1.Text)..'")'
    ObfuscatedText = TextBox1.Text
    TextButton1.Active = true
 end
@@ -132,6 +132,6 @@ if TextBox1.Text ~= "" and TextButton2.Active == true then
    TextButton2.Active = false
    setclipboard(TextBox1.Text)
    TextButton2.Active = true
-   RequestToastMessage("Copied!", 2)
+   RequestToastMessage("copied!", 2)
 end
 end)

